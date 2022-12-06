@@ -35,3 +35,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+#Забыл коммент Added gitignore
+
