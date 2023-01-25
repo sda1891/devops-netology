@@ -37,3 +37,5 @@ terraform.rc
 
 #Забыл коммент Added gitignore
 
+Add NEW LINE 
+
