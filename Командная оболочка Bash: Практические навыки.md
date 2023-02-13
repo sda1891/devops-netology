@@ -65,14 +65,16 @@ done
 
 ### Ваш скрипт:
 #!/usr/bin/env bash
-
 while true; do
         curl https://localhost:4757
 
-        if [ $? -ne 0 ]; then
+        if [ $? -ne 0 ]; 
+	then
                 echo "curl failed with exit code $?"
-                date >> curl.log
-        fi
+        	date >> curl.log
+        else 
+		break
+	fi
 
         sleep 5
 done
