@@ -194,8 +194,6 @@ tcpdump: listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot leng
 100 packets captured
 102 packets received by filter
 0 packets dropped by kernel
-root@t450s:~# cp -v 100packets.pcap /home/sergio/
-'100packets.pcap' -> '/home/sergio/100packets.pcap'
 
 ```
 ![ScreenShot Bitwarden](./raw/tcpdump.JPG)
