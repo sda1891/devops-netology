@@ -23,7 +23,7 @@ After=network.target
 [Service]
 Type=simple
 EnvironmentFile=/opt/node_exporter.env
-ExecStart=/usr/local/bin/node_exporter
+ExecStart=/usr/local/bin/node_exporter $EXTRA_OPTS
 StandardOutput=file:/var/log/node_explorer.log
 StandardError=file:/var/log/node_explorer.log
 
