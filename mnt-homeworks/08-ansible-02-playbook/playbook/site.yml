@@ -8,18 +8,21 @@
         name: clickhouse-server
         state: restarted
   tasks:
-    - block:
-        - name: Get clickhouse distrib
+    - name: "Tasks block"
+      block:
+        - name: "Get clickhouse distrib"
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
             dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+            mode: "0644"
           with_items: "{{ clickhouse_packages }}"
       rescue:
-        - name: Get clickhouse distrib
+        - name: "Get clickhouse distrib"
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
-    - name: Install clickhouse packages
+            mode: "0644"
+    - name: "Install clickhouse packages"
       become: true
       ansible.builtin.yum:
         name:
@@ -27,12 +30,12 @@
           - clickhouse-client-{{ clickhouse_version }}.rpm
           - clickhouse-server-{{ clickhouse_version }}.rpm
       notify: Start clickhouse service
-    - name: Flush handlers
-      meta: flush_handlers
-    - name: Create database
+    - name: "Flush handlers"
+      ansible.builtin.meta: flush_handlers
+    - name: "Create database"
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db
-      failed_when: create_db.rc != 0 and create_db.rc !=82
+      failed_when: create_db.rc != 0 and create_db.rc != 82
       changed_when: create_db.rc == 0
 - name: Install Vector
   hosts: vector
@@ -47,12 +50,13 @@
       ansible.builtin.get_url:
         url: "https://packages.timber.io/vector/{{ vector_version }}/vector-1.x86_64.rpm"
         dest: "/vector-{{ vector_version }}.x86_64.rpm"
-        timeout: 200  
+        mode: "0644"
+        timeout: 200
     - name: Vector | Install packages
       become: true
       ansible.builtin.yum:
         name: "/vector-{{ vector_version }}.x86_64.rpm"
-        state: present  
+        state: present
         disable_gpg_check: true
     - name: Vector | Apply template
       become: true
@@ -72,4 +76,4 @@
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_gid }}"
         backup: true
-      notify: Start Vector service        
+      notify: Start Vector service
