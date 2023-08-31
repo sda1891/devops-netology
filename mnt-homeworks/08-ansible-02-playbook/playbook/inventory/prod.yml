@@ -4,7 +4,6 @@ clickhouse:
     clickhouse-01:
       ansible_connection: docker
 
-
 vector:
   hosts:
     vector-01:

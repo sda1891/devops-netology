@@ -7,8 +7,10 @@
       ansible.builtin.service:
         name: clickhouse-server
         state: restarted
+  tags: clickhouse
   tasks:
     - name: "Tasks block"
+      tags: clickhouse
       block:
         - name: "Get clickhouse distrib"
           ansible.builtin.get_url:
@@ -30,13 +32,16 @@
           - clickhouse-client-{{ clickhouse_version }}.rpm
           - clickhouse-server-{{ clickhouse_version }}.rpm
       notify: Start clickhouse service
+      tags: clickhouse
     - name: "Flush handlers"
       ansible.builtin.meta: flush_handlers
+      tags: clickhouse
     - name: "Create database"
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db
       failed_when: create_db.rc != 0 and create_db.rc != 82
       changed_when: create_db.rc == 0
+      tags: clickhouse
 - name: "Install Vector"
   hosts: vector
   handlers:
@@ -45,6 +50,7 @@
       ansible.builtin.service:
         name: vector
         state: restarted
+  tags: vector
   tasks:
     - name: "Download Vector packages"
       ansible.builtin.get_url:
@@ -52,12 +58,14 @@
         dest: "/vector-{{ vector_version }}.x86_64.rpm"
         mode: "0644"
         timeout: 200
+      tags: vector
     - name: "Install Vector packages"
       become: true
       ansible.builtin.yum:
         name: "/vector-{{ vector_version }}.x86_64.rpm"
         state: present
         disable_gpg_check: true
+      tags: vector
     - name: "Apply Vector template"
       become: true
       ansible.builtin.template:
@@ -66,7 +74,8 @@
         mode: "0644"
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_gid }}"
-        validate: vector validate --no-environment --config-yaml %s
+        validate: vectorvalidate --no-environment --config-yaml %s
+      tags: vector
     - name: "Change Vector systemd unit"
       become: true
       ansible.builtin.template:
@@ -77,3 +86,4 @@
         group: "{{ ansible_user_gid }}"
         backup: true
       notify: "Start Vector service"
+      tags: vector
