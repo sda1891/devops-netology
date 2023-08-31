@@ -1,8 +1,8 @@
 ---
-- name: Install Clickhouse
+- name: "Install Clickhouse"
   hosts: clickhouse
   handlers:
-    - name: Start clickhouse service
+    - name: "Start clickhouse service"
       become: true
       ansible.builtin.service:
         name: clickhouse-server
@@ -37,28 +37,28 @@
       register: create_db
       failed_when: create_db.rc != 0 and create_db.rc != 82
       changed_when: create_db.rc == 0
-- name: Install Vector
+- name: "Install Vector"
   hosts: vector
   handlers:
-    - name: Start Vector service
+    - name: "Start Vector service"
       become: true
       ansible.builtin.service:
         name: vector
         state: restarted
   tasks:
-    - name: Vector | Download packages
+    - name: "Download Vector packages"
       ansible.builtin.get_url:
         url: "https://packages.timber.io/vector/{{ vector_version }}/vector-1.x86_64.rpm"
         dest: "/vector-{{ vector_version }}.x86_64.rpm"
         mode: "0644"
         timeout: 200
-    - name: Vector | Install packages
+    - name: "Install Vector packages"
       become: true
       ansible.builtin.yum:
         name: "/vector-{{ vector_version }}.x86_64.rpm"
         state: present
         disable_gpg_check: true
-    - name: Vector | Apply template
+    - name: "Apply Vector template"
       become: true
       ansible.builtin.template:
         src: vector.yml.j2
@@ -67,7 +67,7 @@
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_gid }}"
         validate: vector validate --no-environment --config-yaml %s
-    - name: Vector | change systemd unit
+    - name: "Change Vector systemd unit"
       become: true
       ansible.builtin.template:
         src: vector.service.j2
@@ -76,4 +76,4 @@
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_gid }}"
         backup: true
-      notify: Start Vector service
+      notify: "Start Vector service"
