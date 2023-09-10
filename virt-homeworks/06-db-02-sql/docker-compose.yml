@@ -28,4 +28,3 @@ volumes:
   postgres-backups:
   postgres-data-recover:
   postgres-backups-recover:
-
