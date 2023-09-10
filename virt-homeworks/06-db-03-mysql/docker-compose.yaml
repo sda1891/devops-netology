@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql-container
+    environment:
+      MYSQL_DATABASE: user1db
+      MYSQL_ROOT_PASSWORD: "user1pass"
+    volumes:
+      - mysql-data:/var/lib/mysql/
+      - mysql-config:/etc/mysql/
+      - ./test_data:/docker-entrypoint-initdb.d/
+    restart: always
+volumes:
+  mysql-data:
+  mysql-config:
+

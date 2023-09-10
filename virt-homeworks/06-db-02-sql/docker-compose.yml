@@ -12,7 +12,20 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - postgres-backups:/backups
 
+  postgres-recover:
+    image: postgres:12
+    container_name: postgres-container-recover
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: user1pass
+      POSTGRES_DB: user1db_recover
+    volumes:
+      - postgres-data-recover:/var/lib/postgresql/data
+      - postgres-backups-recover:/backups
+
 volumes:
   postgres-data:
   postgres-backups:
+  postgres-data-recover:
+  postgres-backups-recover:
 
