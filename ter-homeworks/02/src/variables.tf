@@ -31,11 +31,16 @@ variable "vpc_name" {
   description = "VPC network & subnet name"
 }
 
+variable "image_name" {
+  type        = string
+  default     = "ubuntu-2004-lts"
+  description = "OS image name"
+}
 
 ###ssh vars
 
 variable "vms_ssh_root_key" {
   type        = string
-  default     = "<your_ssh_ed25519_key>"
+  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFjniaF89roNEO4N46BQa4qJP7BChA0Q2NSNSxquJqmX root@t450s"
   description = "ssh-keygen -t ed25519"
 }
