@@ -1,26 +1,11 @@
 # Домашнее задание к занятию «Управляющие конструкции в коде Terraform»
 
-### Цели задания
-
-1. Отработать основные принципы и методы работы с управляющими конструкциями Terraform.
-2. Освоить работу с шаблонизатором Terraform (Interpolation Syntax).
-
-------
-
-### Чек-лист готовности к домашнему заданию
-
-1. Зарегистрирован аккаунт в Yandex Cloud. Использован промокод на грант.
-2. Установлен инструмент Yandex CLI.
-3. Доступен исходный код для выполнения задания в директории [**03/src**](https://github.com/netology-code/ter-homeworks/tree/main/03/src).
-4. Любые ВМ, использованные при выполнении задания, должны быть прерываемыми, для экономии средств.
-
-------
 
 ### Инструменты и дополнительные материалы, которые пригодятся для выполнения задания
 
 1. [Консоль управления Yandex Cloud](https://console.cloud.yandex.ru/folders/<cloud_id>/vpc/security-groups).
 2. [Группы безопасности](https://cloud.yandex.ru/docs/vpc/concepts/security-groups?from=int-console-help-center-or-nav).
-3. [Datasource compute disk](https://terraform-eap.website.yandexcloud.net/docs/providers/yandex/d/datasource_compute_disk.html).
+3. [Datasource compute disk](https://terraform-provider.yandexcloud.net/DataSources/datasource_compute_disk).
 
 
 ### Задание 1
