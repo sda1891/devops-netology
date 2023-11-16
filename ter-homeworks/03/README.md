@@ -1,13 +1,5 @@
 # Домашнее задание к занятию «Управляющие конструкции в коде Terraform»
 
-
-### Инструменты и дополнительные материалы, которые пригодятся для выполнения задания
-
-1. [Консоль управления Yandex Cloud](https://console.cloud.yandex.ru/folders/<cloud_id>/vpc/security-groups).
-2. [Группы безопасности](https://cloud.yandex.ru/docs/vpc/concepts/security-groups?from=int-console-help-center-or-nav).
-3. [Datasource compute disk](https://terraform-provider.yandexcloud.net/DataSources/datasource_compute_disk).
-
-
 ### Задание 1
 
 1. Изучите проект.
@@ -18,11 +10,63 @@
 
 Приложите скриншот входящих правил «Группы безопасности» в ЛК Yandex Cloud или скриншот отказа в предоставлении доступа к preview-версии.
 
+![Входящие правила](./img/task1_vpc.png)
+
 ------
 
 ### Задание 2
 
 1. Создайте файл count-vm.tf. Опишите в нём создание двух **одинаковых** ВМ  web-1 и web-2 (не web-0 и web-1) с минимальными параметрами, используя мета-аргумент **count loop**. Назначьте ВМ созданную в первом задании группу безопасности.(как это сделать узнайте в документации провайдера yandex/compute_instance )
+```
+resource "yandex_compute_instance" "web" {
+  count = 2
+
+  name        = "web-${count.index + 1}"
+  platform_id = "standard-v1"
+
+  resources {
+    cores        = 2
+    memory       = 1
+    core_fraction = 5
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = data.yandex_compute_image.ubuntu-2004-lts.image_id
+      type     = "network-hdd"
+      size     = 10
+    }
+  }
+
+  metadata = {
+    ssh-keys = "ubuntu:${var.public_key}"
+  }
+
+  scheduling_policy {
+    preemptible = true
+  }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = true
+  }
+
+  allow_stopping_for_update = true
+}
+
+```
+
+```
+root@t450s:/home/user1/devops-netology/ter-homeworks/03/src# yc compute instance list
++----------------------+-------+---------------+---------+-----------------+-------------+
+|          ID          | NAME  |    ZONE ID    | STATUS  |   EXTERNAL IP   | INTERNAL IP |
++----------------------+-------+---------------+---------+-----------------+-------------+
+| fhm21l2t3rguuv8gqbqf | web-1 | ru-central1-a | RUNNING | 158.160.126.58  | 10.0.1.15   |
+| fhmrd74h249qjoplae3n | web-2 | ru-central1-a | RUNNING | 158.160.113.129 | 10.0.1.9    |
++----------------------+-------+---------------+---------+-----------------+-------------+
+
+```
+
 2. Создайте файл for_each-vm.tf. Опишите в нём создание двух ВМ с именами "main" и "replica" **разных** по cpu/ram/disk , используя мета-аргумент **for_each loop**. Используйте для обеих ВМ одну общую переменную типа list(object({ vm_name=string, cpu=number, ram=number, disk=number  })). При желании внесите в переменную все возможные параметры.
 3. ВМ из пункта 2.2 должны создаваться после создания ВМ из пункта 2.1.
 4. Используйте функцию file в local-переменной для считывания ключа ~/.ssh/id_rsa.pub и его последующего использования в блоке metadata, взятому из ДЗ 2.
