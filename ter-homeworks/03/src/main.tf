@@ -1,9 +1,24 @@
+terraform {
+  required_version = ">=0.13"
+}
+
+
+# Создаем облачную сеть
 resource "yandex_vpc_network" "develop" {
-  name = var.vpc_name
+  name = "develop"
 }
+
+# Создаем подсеть
 resource "yandex_vpc_subnet" "develop" {
-  name           = var.vpc_name
-  zone           = var.default_zone
+  name           = "develop-ru-central1-a"
+  zone           = "ru-central1-a"
   network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.default_cidr
+  v4_cidr_blocks = ["10.0.1.0/24"]
 }
+
+# Считываем данные об образе ОС
+data "yandex_compute_image" "ubuntu-2004-lts" {
+  family = "ubuntu-2004-lts"
+}
+
+
