@@ -21,9 +21,12 @@
 	Playbook запустил, изменения произведены. Получил рабочий сайт ![**LightHouse**](./img/lighthouse.png)
 	
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
+	
+	[**Playbook 08-ansible-03-yandex readme**](https://github.com/sda1891/devops-netology/tree/main/mnt-homeworks/08-ansible-03-yandex/playbook/README.md)
+
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
-	[**08-ansible-03-yandex playbook readme**](https://github.com/sda1891/devops-netology/tree/main/mnt-homeworks/08-ansible-03-yandex/playbook/README.md)
+	[**Playbook 08-ansible-03-yandex**](https://github.com/sda1891/devops-netology/tree/main/mnt-homeworks/08-ansible-03-yandex/playbook/)
 	
 ---
 
