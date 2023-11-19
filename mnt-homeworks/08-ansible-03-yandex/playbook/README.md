@@ -9,11 +9,13 @@ Play clickhouse cостоит из:
 
     * 1 handler  
     * 4 tasks  
+
 2. Установка Vector: Этот play загружает и устанавливает пакеты Vector на указанные хосты, применяет шаблон конфигурации и убеждается, что сервис Vector запущен.
 Play vector состоит из:
 
     * 1 handler
     * 4 tasks 
+
 3. Установка Lighthouse: Этот play загружает файлы Lighthouse, устанавлаивает Nginx и запускает HTTP сервер.
 Play lighthouse	состоит из:
 	* 1 headers
