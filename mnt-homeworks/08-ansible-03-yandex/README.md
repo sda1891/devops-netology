@@ -9,6 +9,36 @@
 	
 	Подготовил.
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
+
+До:
+```user1@t450s:~/devops-netology/mnt-homeworks/08-ansible-03-yandex/playbook$ ansible-lint site.yml
+WARNING  Listing 3 violation(s) that are fatal
+fqcn[action-core]: Use FQCN for builtin module actions (git).
+site.yml:117 Use `ansible.builtin.git` or `ansible.legacy.git` instead.
+
+fqcn[action-core]: Use FQCN for builtin module actions (template).
+site.yml:123 Use `ansible.builtin.template` or `ansible.legacy.template` instead.
+
+fqcn[action-core]: Use FQCN for builtin module actions (meta).
+site.yml:130 Use `ansible.builtin.meta` or `ansible.legacy.meta` instead.
+
+Read documentation for instructions on how to ignore specific rule violations.
+
+                 Rule Violation Summary
+ count tag               profile    rule associated tags
+     3 fqcn[action-core] production formatting
+
+Failed: 3 failure(s), 0 warning(s) on 1 files. Last profile that met the validation criteria was 'shared'. Rating: 4/5 star
+A new release of ansible-lint is available: 6.18.0 → 6.22.0
+```
+После:
+```
+user1@t450s:~/devops-netology/mnt-homeworks/08-ansible-03-yandex/playbook$ ansible-lint site.yml
+
+Passed: 0 failure(s), 0 warning(s) on 1 files. Last profile that met the validation criteria was 'production'.
+A new release of ansible-lint is available: 6.18.0 → 6.22.0
+```
+
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
 
 	Выполнил.
