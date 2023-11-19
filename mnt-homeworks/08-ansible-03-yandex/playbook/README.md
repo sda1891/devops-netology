@@ -55,7 +55,6 @@ handlers: Перезапустить сервисы ClickHouse или Vector п�
 # ansible-playbook -i inventory.yml playbook.yml --tags vector
 ```
 
-
 ### Play Clickhouse
 1. Загружаются rpm пакеты для установки версии, согласно переменной `{{clickhouse_version}}` в файле `./playbook/group_vars/clickhouse/clickhouse.yml`
 Перечень пакетов для установки задается в `{{ clickhouse_packages }}` и подставляется зачение через `{{with_items}}` в цикле:
