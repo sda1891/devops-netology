@@ -1,2 +1,4 @@
 ---
-# vars file for lighthouse
+nginx_user_name: nginx
+lighthouse_repo: "https://github.com/vkcom/lighthouse"
+lighthouse_path: /usr/share/nginx/html/lighthouse
