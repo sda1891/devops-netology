@@ -44,7 +44,9 @@
       tags: clickhouse
 - name: "Install Vector"
   hosts: vector
-  roles: vector-role
+  roles: 
+      - vector-role
 - name: "Install Lighthouse"
   hosts: lighthouse  
-  roles: lighthouse
+  roles: 
+      - lighthouse
