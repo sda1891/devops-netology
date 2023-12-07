@@ -1,4 +1,9 @@
 ---
+- name: "Install git"
+  become: true
+  ansible.builtin.yum:
+    name: git
+    state: present
 - name: "Install epel repo"
   become: true
   ansible.builtin.yum:

@@ -1,47 +1,19 @@
 ---
-- name: "Install Clickhouse"
+- name: Install Clickhouse
   hosts: clickhouse
-  handlers:
-    - name: "Start clickhouse service"
-      become: true
-      ansible.builtin.service:
-        name: clickhouse-server
-        state: restarted
-  tags: clickhouse
-  tasks:
-    - name: "Tasks block"
-      tags: clickhouse
-      block:
-        - name: "Get clickhouse distrib"
-          ansible.builtin.get_url:
-            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
-            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
-            mode: "0644"
-          with_items: "{{ clickhouse_packages }}"
-      rescue:
-        - name: "Get clickhouse distrib"
-          ansible.builtin.get_url:
-            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
-            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
-            mode: "0644"
-    - name: "Install clickhouse packages"
-      become: true
-      ansible.builtin.yum:
-        name:
-          - clickhouse-common-static-{{ clickhouse_version }}.rpm
-          - clickhouse-client-{{ clickhouse_version }}.rpm
-          - clickhouse-server-{{ clickhouse_version }}.rpm
-      notify: Start clickhouse service
-      tags: clickhouse
-    - name: "Flush handlers"
-      ansible.builtin.meta: flush_handlers
-      tags: clickhouse
-    - name: "Create database"
-      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
-      register: create_db
-      failed_when: create_db.rc != 0 and create_db.rc != 82
-      changed_when: create_db.rc == 0
-      tags: clickhouse
+  roles:
+    - role: clickhouse
+      clickhouse_version: "22.3.3.44"
+      clickhouse_dbs_custom:
+        - {name: sample, state: present, }
+      clickhouse_users_custom:
+        - { name: "loger",
+            password: "loger",
+            networks: { 192.168.1.81, 192.168.1.79 },
+            profile: "default",
+            quota: "default",
+            dbs: "sample"}
+
 - name: "Install Vector"
   hosts: vector
   roles: 
