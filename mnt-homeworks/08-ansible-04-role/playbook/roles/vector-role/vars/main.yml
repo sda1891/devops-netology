@@ -1,4 +1,5 @@
 ---
+vector_repo: "https://packages.timber.io/vector"
 vector_packages:
   - vector-1
 vector_config_dir: "/etc/vector"

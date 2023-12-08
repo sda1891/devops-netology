@@ -1,7 +1,7 @@
 ---
 - name: "Download Vector packages"
   ansible.builtin.get_url:
-    url: "https://packages.timber.io/vector/{{ vector_version }}/vector-1.x86_64.rpm"
+    url: "{{ vector_repo }}/{{ vector_version }}/vector-1.x86_64.rpm"
     dest: "/home/user1/vector-{{ vector_version }}.x86_64.rpm"
     mode: "0644"
     timeout: 200
