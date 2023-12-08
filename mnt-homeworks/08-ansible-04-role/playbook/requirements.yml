@@ -5,7 +5,7 @@
   name: clickhouse
 - src: https://github.com/sda1891/lighthouse-role.git
   scm: git
-  version: 1.0.0
+  version: 1.0.1
   name: lighthouse-role
 - src: https://github.com/sda1891/vector-role.git
   scm: git

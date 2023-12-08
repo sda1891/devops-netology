@@ -21,7 +21,7 @@ Role Variables
 --------------
 
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) file as well as in table below.
+All variables which can be overridden are stored in [defaults/main.yml](defaults/main.yml) file as well as in table below. 
 
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
@@ -37,7 +37,7 @@ Including an example of how to use your role (for instance, with variables passe
 ```yaml
     - hosts: servers
       roles:
-         - role: lighthouse
+         - role: lighthouse-role
 ```
 
 License
