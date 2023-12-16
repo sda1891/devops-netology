@@ -1,0 +1,611 @@
+[0KRunning with gitlab-runner 16.6.0~beta.105.gd2263193 (d2263193)[0;m
+[0K  on blue-5.saas-linux-small-amd64.runners-manager.gitlab.com/default -AzERasQ, system ID: s_4cb09cee29e2[0;m
+[0K  feature flags: FF_USE_IMPROVED_URL_MASKING:true[0;m
+section_start:1702756633:prepare_executor[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image docker:cli ...[0;m
+[0KStarting service docker:dind ...[0;m
+[0KPulling docker image docker:dind ...[0;m
+[0KUsing docker image sha256:6091c7bd89fd2789606b49815b2b9ea1a9142ee6e8762089ab3975afd6784a6c for docker:dind with digest docker@sha256:1b9844d846ce3a6a6af7013e999a373112c3c0450aca49e155ae444526a2c45e ...[0;m
+[0KWaiting for services to be up and running (timeout 30 seconds)...[0;m
+[0KPulling docker image docker:cli ...[0;m
+[0KUsing docker image sha256:cbdc7727a01249b32f9ddd1e054507b1cdc4baa85e041e592e744d4fd36936f5 for docker:cli with digest docker@sha256:1d835c53466737f96cc5a85e94a575acef9bdfb02da59dc21b82653fd4f1d1eb ...[0;m
+section_end:1702756664:prepare_executor[0Ksection_start:1702756664:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner--azerasq-project-53119832-concurrent-0 via runner-azerasq-s-l-s-amd64-1702756517-4397d332...
+section_end:1702756664:prepare_script[0Ksection_start:1702756664:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Initialized empty Git repository in /builds/derevyanchenko.sa/09-ci-06-gitlab/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out c53b9fdc as detached HEAD (ref is main)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}"[0;m
+section_end:1702756665:get_sources[0Ksection_start:1702756665:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:cbdc7727a01249b32f9ddd1e054507b1cdc4baa85e041e592e744d4fd36936f5 for docker:cli with digest docker@sha256:1d835c53466737f96cc5a85e94a575acef9bdfb02da59dc21b82653fd4f1d1eb ...[0;m
+[32;1m$ docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY[0;m
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[32;1m$ docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/hello:gitlab-$CI_COMMIT_SHORT_SHA .[0;m
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 467B done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/centos:7
+#3 DONE 0.5s
+
+#4 [internal] load build context
+#4 transferring context: 511B done
+#4 DONE 0.0s
+
+#5 [1/9] FROM docker.io/library/centos:7@sha256:be65f488b7764ad3638f236b7b515b3678369a5124c47b8d32916d6487418ea4
+#5 resolve docker.io/library/centos:7@sha256:be65f488b7764ad3638f236b7b515b3678369a5124c47b8d32916d6487418ea4 0.0s done
+#5 sha256:be65f488b7764ad3638f236b7b515b3678369a5124c47b8d32916d6487418ea4 1.20kB / 1.20kB done
+#5 sha256:dead07b4d8ed7e29e98de0f4504d87e8880d4347859d839686a31da35a3b532f 529B / 529B done
+#5 sha256:eeb6ee3f44bd0b5103bb561b4c16bcb82328cfe5809ab675bb17ab3a16c517c9 2.75kB / 2.75kB done
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 0B / 76.10MB 0.1s
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 12.58MB / 76.10MB 0.2s
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 24.12MB / 76.10MB 0.4s
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 48.23MB / 76.10MB 0.6s
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 56.40MB / 76.10MB 0.7s
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 76.10MB / 76.10MB 0.9s
+#5 sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 76.10MB / 76.10MB 1.3s done
+#5 extracting sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 0.1s
+#5 extracting sha256:2d473b07cdd5f0912cd6f1a703352c82b512407db6b05b43f2553732b55df3bc 3.6s done
+#5 DONE 5.3s
+
+#6 [2/9] RUN yum install python3 python3-lib git -y
+#6 0.298 Loaded plugins: fastestmirror, ovl
+#6 0.459 Determining fastest mirrors
+#6 0.857  * base: centos.mirror.constant.com
+#6 0.858  * extras: mirrors.iu13.net
+#6 0.859  * updates: mirror.vcu.edu
+#6 7.911 No package python3-lib available.
+#6 7.987 Resolving Dependencies
+#6 7.989 --> Running transaction check
+#6 7.989 ---> Package git.x86_64 0:1.8.3.1-25.el7_9 will be installed
+#6 7.999 --> Processing Dependency: perl-Git = 1.8.3.1-25.el7_9 for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.127 --> Processing Dependency: perl >= 5.008 for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.136 --> Processing Dependency: rsync for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.139 --> Processing Dependency: perl(warnings) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.139 --> Processing Dependency: perl(vars) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.140 --> Processing Dependency: perl(strict) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.140 --> Processing Dependency: perl(lib) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.140 --> Processing Dependency: perl(Term::ReadKey) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.141 --> Processing Dependency: perl(Git) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.142 --> Processing Dependency: perl(Getopt::Long) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.143 --> Processing Dependency: perl(File::stat) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.144 --> Processing Dependency: perl(File::Temp) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.145 --> Processing Dependency: perl(File::Spec) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.147 --> Processing Dependency: perl(File::Path) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.148 --> Processing Dependency: perl(File::Find) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.149 --> Processing Dependency: perl(File::Copy) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.149 --> Processing Dependency: perl(File::Basename) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.150 --> Processing Dependency: perl(Exporter) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.151 --> Processing Dependency: perl(Error) for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.152 --> Processing Dependency: openssh-clients for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.154 --> Processing Dependency: less for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.155 --> Processing Dependency: /usr/bin/perl for package: git-1.8.3.1-25.el7_9.x86_64
+#6 8.156 ---> Package python3.x86_64 0:3.6.8-21.el7_9 will be installed
+#6 8.158 --> Processing Dependency: python3-libs(x86-64) = 3.6.8-21.el7_9 for package: python3-3.6.8-21.el7_9.x86_64
+#6 8.162 --> Processing Dependency: python3-setuptools for package: python3-3.6.8-21.el7_9.x86_64
+#6 8.163 --> Processing Dependency: python3-pip for package: python3-3.6.8-21.el7_9.x86_64
+#6 8.165 --> Processing Dependency: libpython3.6m.so.1.0()(64bit) for package: python3-3.6.8-21.el7_9.x86_64
+#6 8.165 --> Running transaction check
+#6 8.166 ---> Package less.x86_64 0:458-9.el7 will be installed
+#6 8.167 --> Processing Dependency: groff-base for package: less-458-9.el7.x86_64
+#6 8.168 ---> Package openssh-clients.x86_64 0:7.4p1-23.el7_9 will be installed
+#6 8.174 --> Processing Dependency: openssh = 7.4p1-23.el7_9 for package: openssh-clients-7.4p1-23.el7_9.x86_64
+#6 8.175 --> Processing Dependency: fipscheck-lib(x86-64) >= 1.3.0 for package: openssh-clients-7.4p1-23.el7_9.x86_64
+#6 8.177 --> Processing Dependency: libfipscheck.so.1()(64bit) for package: openssh-clients-7.4p1-23.el7_9.x86_64
+#6 8.177 --> Processing Dependency: libedit.so.0()(64bit) for package: openssh-clients-7.4p1-23.el7_9.x86_64
+#6 8.179 ---> Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+#6 8.186 --> Processing Dependency: perl-libs = 4:5.16.3-299.el7_9 for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.189 --> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.190 --> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.192 --> Processing Dependency: perl-macros for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.193 --> Processing Dependency: perl-libs for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.194 --> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.195 --> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.196 --> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.197 --> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.198 --> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.199 --> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.200 --> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.201 --> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.201 --> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.203 --> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.203 --> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.204 --> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.205 --> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-299.el7_9.x86_64
+#6 8.206 ---> Package perl-Error.noarch 1:0.17020-2.el7 will be installed
+#6 8.208 ---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+#6 8.209 ---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+#6 8.211 ---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+#6 8.214 ---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+#6 8.216 --> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+#6 8.217 --> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+#6 8.218 ---> Package perl-Git.noarch 0:1.8.3.1-25.el7_9 will be installed
+#6 8.221 ---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+#6 8.222 ---> Package perl-TermReadKey.x86_64 0:2.30-20.el7 will be installed
+#6 8.224 ---> Package python3-libs.x86_64 0:3.6.8-21.el7_9 will be installed
+#6 8.228 --> Processing Dependency: libtirpc.so.1()(64bit) for package: python3-libs-3.6.8-21.el7_9.x86_64
+#6 8.236 ---> Package python3-pip.noarch 0:9.0.3-8.el7 will be installed
+#6 8.236 ---> Package python3-setuptools.noarch 0:39.2.0-10.el7 will be installed
+#6 8.236 ---> Package rsync.x86_64 0:3.1.2-12.el7_9 will be installed
+#6 8.237 --> Running transaction check
+#6 8.237 ---> Package fipscheck-lib.x86_64 0:1.4.1-6.el7 will be installed
+#6 8.238 --> Processing Dependency: /usr/bin/fipscheck for package: fipscheck-lib-1.4.1-6.el7.x86_64
+#6 8.240 ---> Package groff-base.x86_64 0:1.22.2-8.el7 will be installed
+#6 8.242 ---> Package libedit.x86_64 0:3.0-12.20121213cvs.el7 will be installed
+#6 8.242 ---> Package libtirpc.x86_64 0:0.2.4-0.16.el7 will be installed
+#6 8.243 ---> Package openssh.x86_64 0:7.4p1-23.el7_9 will be installed
+#6 8.245 ---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+#6 8.246 ---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+#6 8.249 ---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+#6 8.253 --> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+#6 8.255 --> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+#6 8.257 ---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+#6 8.259 --> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+#6 8.260 --> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+#6 8.261 ---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+#6 8.263 ---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+#6 8.264 ---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+#6 8.266 ---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+#6 8.267 ---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+#6 8.269 ---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+#6 8.270 ---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+#6 8.272 ---> Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+#6 8.273 ---> Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+#6 8.273 ---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+#6 8.276 ---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+#6 8.277 --> Running transaction check
+#6 8.278 ---> Package fipscheck.x86_64 0:1.4.1-6.el7 will be installed
+#6 8.278 ---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+#6 8.282 ---> Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+#6 8.283 ---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+#6 8.288 --> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+#6 8.289 --> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+#6 8.290 ---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+#6 8.293 --> Running transaction check
+#6 8.294 ---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+#6 8.296 ---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+#6 8.384 --> Finished Dependency Resolution
+#6 8.396 
+#6 8.396 Dependencies Resolved
+#6 8.404 
+#6 8.404 ================================================================================
+#6 8.404  Package                   Arch      Version                   Repository  Size
+#6 8.404 ================================================================================
+#6 8.404 Installing:
+#6 8.404  git                       x86_64    1.8.3.1-25.el7_9          updates    4.4 M
+#6 8.404  python3                   x86_64    3.6.8-21.el7_9            updates     71 k
+#6 8.404 Installing for dependencies:
+#6 8.404  fipscheck                 x86_64    1.4.1-6.el7               base        21 k
+#6 8.404  fipscheck-lib             x86_64    1.4.1-6.el7               base        11 k
+#6 8.404  groff-base                x86_64    1.22.2-8.el7              base       942 k
+#6 8.404  less                      x86_64    458-9.el7                 base       120 k
+#6 8.404  libedit                   x86_64    3.0-12.20121213cvs.el7    base        92 k
+#6 8.404  libtirpc                  x86_64    0.2.4-0.16.el7            base        89 k
+#6 8.404  openssh                   x86_64    7.4p1-23.el7_9            updates    510 k
+#6 8.404  openssh-clients           x86_64    7.4p1-23.el7_9            updates    655 k
+#6 8.404  perl                      x86_64    4:5.16.3-299.el7_9        updates    8.0 M
+#6 8.404  perl-Carp                 noarch    1.26-244.el7              base        19 k
+#6 8.404  perl-Encode               x86_64    2.51-7.el7                base       1.5 M
+#6 8.404  perl-Error                noarch    1:0.17020-2.el7           base        32 k
+#6 8.404  perl-Exporter             noarch    5.68-3.el7                base        28 k
+#6 8.404  perl-File-Path            noarch    2.09-2.el7                base        26 k
+#6 8.404  perl-File-Temp            noarch    0.23.01-3.el7             base        56 k
+#6 8.404  perl-Filter               x86_64    1.49-3.el7                base        76 k
+#6 8.404  perl-Getopt-Long          noarch    2.40-3.el7                base        56 k
+#6 8.404  perl-Git                  noarch    1.8.3.1-25.el7_9          updates     56 k
+#6 8.404  perl-HTTP-Tiny            noarch    0.033-3.el7               base        38 k
+#6 8.404  perl-PathTools            x86_64    3.40-5.el7                base        82 k
+#6 8.404  perl-Pod-Escapes          noarch    1:1.04-299.el7_9          updates     52 k
+#6 8.404  perl-Pod-Perldoc          noarch    3.20-4.el7                base        87 k
+#6 8.404  perl-Pod-Simple           noarch    1:3.28-4.el7              base       216 k
+#6 8.404  perl-Pod-Usage            noarch    1.63-3.el7                base        27 k
+#6 8.404  perl-Scalar-List-Utils    x86_64    1.27-248.el7              base        36 k
+#6 8.404  perl-Socket               x86_64    2.010-5.el7               base        49 k
+#6 8.404  perl-Storable             x86_64    2.45-3.el7                base        77 k
+#6 8.404  perl-TermReadKey          x86_64    2.30-20.el7               base        31 k
+#6 8.404  perl-Text-ParseWords      noarch    3.29-4.el7                base        14 k
+#6 8.404  perl-Time-HiRes           x86_64    4:1.9725-3.el7            base        45 k
+#6 8.404  perl-Time-Local           noarch    1.2300-2.el7              base        24 k
+#6 8.404  perl-constant             noarch    1.27-2.el7                base        19 k
+#6 8.404  perl-libs                 x86_64    4:5.16.3-299.el7_9        updates    690 k
+#6 8.404  perl-macros               x86_64    4:5.16.3-299.el7_9        updates     44 k
+#6 8.404  perl-parent               noarch    1:0.225-244.el7           base        12 k
+#6 8.404  perl-podlators            noarch    2.5.1-3.el7               base       112 k
+#6 8.404  perl-threads              x86_64    1.87-4.el7                base        49 k
+#6 8.404  perl-threads-shared       x86_64    1.43-6.el7                base        39 k
+#6 8.404  python3-libs              x86_64    3.6.8-21.el7_9            updates    7.0 M
+#6 8.404  python3-pip               noarch    9.0.3-8.el7               base       1.6 M
+#6 8.404  python3-setuptools        noarch    39.2.0-10.el7             base       629 k
+#6 8.404  rsync                     x86_64    3.1.2-12.el7_9            updates    408 k
+#6 8.404 
+#6 8.404 Transaction Summary
+#6 8.404 ================================================================================
+#6 8.404 Install  2 Packages (+42 Dependent packages)
+#6 8.404 
+#6 8.406 Total download size: 28 M
+#6 8.406 Installed size: 115 M
+#6 8.406 Downloading packages:
+#6 8.539 warning: /var/cache/yum/x86_64/7/base/packages/fipscheck-lib-1.4.1-6.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+#6 8.542 Public key for fipscheck-lib-1.4.1-6.el7.x86_64.rpm is not installed
+#6 8.697 Public key for git-1.8.3.1-25.el7_9.x86_64.rpm is not installed
+#6 10.15 --------------------------------------------------------------------------------
+#6 10.15 Total                                               16 MB/s |  28 MB  00:01     
+#6 10.16 Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+#6 10.16 Importing GPG key 0xF4A80EB5:
+#6 10.16  Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+#6 10.16  Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+#6 10.16  Package    : centos-release-7-9.2009.0.el7.centos.x86_64 (@CentOS)
+#6 10.16  From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+#6 10.23 Running transaction check
+#6 10.25 Running transaction test
+#6 10.31 Transaction test succeeded
+#6 10.31 Running transaction
+#6 10.39   Installing : fipscheck-1.4.1-6.el7.x86_64                                1/44 
+#6 10.42   Installing : fipscheck-lib-1.4.1-6.el7.x86_64                            2/44 
+#6 10.71   Installing : groff-base-1.22.2-8.el7.x86_64                              3/44 
+#6 10.74   Installing : 1:perl-parent-0.225-244.el7.noarch                          4/44 
+#6 10.77   Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                           5/44 
+#6 10.80   Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                          6/44 
+#6 10.84   Installing : perl-podlators-2.5.1-3.el7.noarch                           7/44 
+#6 10.86   Installing : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                    8/44 
+#6 11.10   Installing : perl-Encode-2.51-7.el7.x86_64                               9/44 
+#6 11.13   Installing : perl-Pod-Usage-1.63-3.el7.noarch                           10/44 
+#6 11.16   Installing : perl-Text-ParseWords-3.29-4.el7.noarch                     11/44 
+#6 11.18   Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      12/44 
+#6 11.21   Installing : perl-Exporter-5.68-3.el7.noarch                            13/44 
+#6 11.23   Installing : perl-constant-1.27-2.el7.noarch                            14/44 
+#6 11.27   Installing : perl-Carp-1.26-244.el7.noarch                              15/44 
+#6 11.31   Installing : perl-Socket-2.010-5.el7.x86_64                             16/44 
+#6 11.33   Installing : 4:perl-macros-5.16.3-299.el7_9.x86_64                      17/44 
+#6 11.36   Installing : perl-Time-Local-1.2300-2.el7.noarch                        18/44 
+#6 11.39   Installing : perl-Storable-2.45-3.el7.x86_64                            19/44 
+#6 11.42   Installing : perl-PathTools-3.40-5.el7.x86_64                           20/44 
+#6 11.45   Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 21/44 
+#6 11.48   Installing : perl-File-Temp-0.23.01-3.el7.noarch                        22/44 
+#6 11.51   Installing : perl-File-Path-2.09-2.el7.noarch                           23/44 
+#6 11.53   Installing : perl-threads-1.87-4.el7.x86_64                             24/44 
+#6 11.56   Installing : perl-Filter-1.49-3.el7.x86_64                              25/44 
+#6 11.61   Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                        26/44 
+#6 11.64   Installing : perl-Getopt-Long-2.40-3.el7.noarch                         27/44 
+#6 11.72   Installing : 4:perl-libs-5.16.3-299.el7_9.x86_64                        28/44 
+#6 11.91   Installing : perl-threads-shared-1.43-6.el7.x86_64                      29/44 
+#6 12.76   Installing : 4:perl-5.16.3-299.el7_9.x86_64                             30/44 
+#6 12.81   Installing : 1:perl-Error-0.17020-2.el7.noarch                          31/44 
+#6 12.83   Installing : perl-TermReadKey-2.30-20.el7.x86_64                        32/44 
+#6 12.87   Installing : less-458-9.el7.x86_64                                      33/44 
+#6 13.11   Installing : openssh-7.4p1-23.el7_9.x86_64                              34/44 
+#6 13.15   Installing : libedit-3.0-12.20121213cvs.el7.x86_64                      35/44 
+#6 13.41   Installing : openssh-clients-7.4p1-23.el7_9.x86_64                      36/44 
+#6 13.46   Installing : rsync-3.1.2-12.el7_9.x86_64                                37/44 
+#6 13.65   Installing : perl-Git-1.8.3.1-25.el7_9.noarch                           38/44 
+#6 14.17   Installing : git-1.8.3.1-25.el7_9.x86_64                                39/44 
+#6 14.22   Installing : libtirpc-0.2.4-0.16.el7.x86_64                             40/44 
+#6 14.67   Installing : python3-pip-9.0.3-8.el7.noarch                             41/44 
+#6 14.80   Installing : python3-setuptools-39.2.0-10.el7.noarch                    42/44 
+#6 14.83   Installing : python3-3.6.8-21.el7_9.x86_64                              43/44 
+#6 15.89   Installing : python3-libs-3.6.8-21.el7_9.x86_64                         44/44 
+#6 15.96   Verifying  : fipscheck-lib-1.4.1-6.el7.x86_64                            1/44 
+#6 15.98   Verifying  : libtirpc-0.2.4-0.16.el7.x86_64                              2/44 
+#6 15.99   Verifying  : python3-3.6.8-21.el7_9.x86_64                               3/44 
+#6 16.01   Verifying  : rsync-3.1.2-12.el7_9.x86_64                                 4/44 
+#6 16.02   Verifying  : perl-threads-shared-1.43-6.el7.x86_64                       5/44 
+#6 16.03   Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                       6/44 
+#6 16.04   Verifying  : perl-Exporter-5.68-3.el7.noarch                             7/44 
+#6 16.06   Verifying  : perl-constant-1.27-2.el7.noarch                             8/44 
+#6 16.07   Verifying  : perl-PathTools-3.40-5.el7.x86_64                            9/44 
+#6 16.08   Verifying  : openssh-clients-7.4p1-23.el7_9.x86_64                      10/44 
+#6 16.10   Verifying  : python3-pip-9.0.3-8.el7.noarch                             11/44 
+#6 16.11   Verifying  : perl-Carp-1.26-244.el7.noarch                              12/44 
+#6 16.12   Verifying  : perl-Socket-2.010-5.el7.x86_64                             13/44 
+#6 16.14   Verifying  : 1:perl-parent-0.225-244.el7.noarch                         14/44 
+#6 16.15   Verifying  : 4:perl-macros-5.16.3-299.el7_9.x86_64                      15/44 
+#6 16.16   Verifying  : perl-TermReadKey-2.30-20.el7.x86_64                        16/44 
+#6 16.17   Verifying  : groff-base-1.22.2-8.el7.x86_64                             17/44 
+#6 16.19   Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                        18/44 
+#6 16.20   Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                        19/44 
+#6 16.22   Verifying  : git-1.8.3.1-25.el7_9.x86_64                                20/44 
+#6 16.23   Verifying  : python3-libs-3.6.8-21.el7_9.x86_64                         21/44 
+#6 16.25   Verifying  : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                   22/44 
+#6 16.26   Verifying  : perl-Time-Local-1.2300-2.el7.noarch                        23/44 
+#6 16.28   Verifying  : fipscheck-1.4.1-6.el7.x86_64                               24/44 
+#6 16.29   Verifying  : openssh-7.4p1-23.el7_9.x86_64                              25/44 
+#6 16.31   Verifying  : 1:perl-Error-0.17020-2.el7.noarch                          26/44 
+#6 16.32   Verifying  : perl-Git-1.8.3.1-25.el7_9.noarch                           27/44 
+#6 16.34   Verifying  : perl-Storable-2.45-3.el7.x86_64                            28/44 
+#6 16.35   Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 29/44 
+#6 16.36   Verifying  : python3-setuptools-39.2.0-10.el7.noarch                    30/44 
+#6 16.38   Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                           31/44 
+#6 16.39   Verifying  : perl-Encode-2.51-7.el7.x86_64                              32/44 
+#6 16.41   Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                          33/44 
+#6 16.42   Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                         34/44 
+#6 16.43   Verifying  : perl-podlators-2.5.1-3.el7.noarch                          35/44 
+#6 16.45   Verifying  : 4:perl-5.16.3-299.el7_9.x86_64                             36/44 
+#6 16.47   Verifying  : perl-File-Path-2.09-2.el7.noarch                           37/44 
+#6 16.48   Verifying  : libedit-3.0-12.20121213cvs.el7.x86_64                      38/44 
+#6 16.50   Verifying  : perl-threads-1.87-4.el7.x86_64                             39/44 
+#6 16.51   Verifying  : perl-Filter-1.49-3.el7.x86_64                              40/44 
+#6 16.53   Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                         41/44 
+#6 16.54   Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                     42/44 
+#6 16.56   Verifying  : 4:perl-libs-5.16.3-299.el7_9.x86_64                        43/44 
+#6 16.57   Verifying  : less-458-9.el7.x86_64                                      44/44 
+#6 16.63 
+#6 16.63 Installed:
+#6 16.63   git.x86_64 0:1.8.3.1-25.el7_9         python3.x86_64 0:3.6.8-21.el7_9        
+#6 16.63 
+#6 16.63 Dependency Installed:
+#6 16.63   fipscheck.x86_64 0:1.4.1-6.el7                                                
+#6 16.63   fipscheck-lib.x86_64 0:1.4.1-6.el7                                            
+#6 16.63   groff-base.x86_64 0:1.22.2-8.el7                                              
+#6 16.63   less.x86_64 0:458-9.el7                                                       
+#6 16.63   libedit.x86_64 0:3.0-12.20121213cvs.el7                                       
+#6 16.63   libtirpc.x86_64 0:0.2.4-0.16.el7                                              
+#6 16.63   openssh.x86_64 0:7.4p1-23.el7_9                                               
+#6 16.63   openssh-clients.x86_64 0:7.4p1-23.el7_9                                       
+#6 16.63   perl.x86_64 4:5.16.3-299.el7_9                                                
+#6 16.63   perl-Carp.noarch 0:1.26-244.el7                                               
+#6 16.63   perl-Encode.x86_64 0:2.51-7.el7                                               
+#6 16.63   perl-Error.noarch 1:0.17020-2.el7                                             
+#6 16.63   perl-Exporter.noarch 0:5.68-3.el7                                             
+#6 16.63   perl-File-Path.noarch 0:2.09-2.el7                                            
+#6 16.63   perl-File-Temp.noarch 0:0.23.01-3.el7                                         
+#6 16.63   perl-Filter.x86_64 0:1.49-3.el7                                               
+#6 16.63   perl-Getopt-Long.noarch 0:2.40-3.el7                                          
+#6 16.63   perl-Git.noarch 0:1.8.3.1-25.el7_9                                            
+#6 16.63   perl-HTTP-Tiny.noarch 0:0.033-3.el7                                           
+#6 16.63   perl-PathTools.x86_64 0:3.40-5.el7                                            
+#6 16.63   perl-Pod-Escapes.noarch 1:1.04-299.el7_9                                      
+#6 16.63   perl-Pod-Perldoc.noarch 0:3.20-4.el7                                          
+#6 16.63   perl-Pod-Simple.noarch 1:3.28-4.el7                                           
+#6 16.63   perl-Pod-Usage.noarch 0:1.63-3.el7                                            
+#6 16.63   perl-Scalar-List-Utils.x86_64 0:1.27-248.el7                                  
+#6 16.63   perl-Socket.x86_64 0:2.010-5.el7                                              
+#6 16.63   perl-Storable.x86_64 0:2.45-3.el7                                             
+#6 16.63   perl-TermReadKey.x86_64 0:2.30-20.el7                                         
+#6 16.63   perl-Text-ParseWords.noarch 0:3.29-4.el7                                      
+#6 16.63   perl-Time-HiRes.x86_64 4:1.9725-3.el7                                         
+#6 16.63   perl-Time-Local.noarch 0:1.2300-2.el7                                         
+#6 16.63   perl-constant.noarch 0:1.27-2.el7                                             
+#6 16.63   perl-libs.x86_64 4:5.16.3-299.el7_9                                           
+#6 16.63   perl-macros.x86_64 4:5.16.3-299.el7_9                                         
+#6 16.63   perl-parent.noarch 1:0.225-244.el7                                            
+#6 16.63   perl-podlators.noarch 0:2.5.1-3.el7                                           
+#6 16.63   perl-threads.x86_64 0:1.87-4.el7                                              
+#6 16.63   perl-threads-shared.x86_64 0:1.43-6.el7                                       
+#6 16.63   python3-libs.x86_64 0:3.6.8-21.el7_9                                          
+#6 16.63   python3-pip.noarch 0:9.0.3-8.el7                                              
+#6 16.63   python3-setuptools.noarch 0:39.2.0-10.el7                                     
+#6 16.63   rsync.x86_64 0:3.1.2-12.el7_9                                                 
+#6 16.63 
+#6 16.63 Complete!
+#6 DONE 21.1s
+
+#7 [3/9] RUN yum install centos-release-scl-rh -y
+#7 0.319 Loaded plugins: fastestmirror, ovl
+#7 0.489 Loading mirror speeds from cached hostfile
+#7 0.491  * base: centos.mirror.constant.com
+#7 0.492  * extras: mirrors.iu13.net
+#7 0.492  * updates: mirror.vcu.edu
+#7 2.030 Resolving Dependencies
+#7 2.032 --> Running transaction check
+#7 2.032 ---> Package centos-release-scl-rh.noarch 0:2-3.el7.centos will be installed
+#7 2.067 --> Finished Dependency Resolution
+#7 2.093 
+#7 2.093 Dependencies Resolved
+#7 2.094 
+#7 2.094 ================================================================================
+#7 2.094  Package                    Arch        Version               Repository   Size
+#7 2.094 ================================================================================
+#7 2.094 Installing:
+#7 2.094  centos-release-scl-rh      noarch      2-3.el7.centos        extras       12 k
+#7 2.094 
+#7 2.094 Transaction Summary
+#7 2.094 ================================================================================
+#7 2.094 Install  1 Package
+#7 2.094 
+#7 2.094 Total download size: 12 k
+#7 2.094 Installed size: 20 k
+#7 2.095 Downloading packages:
+#7 2.205 Running transaction check
+#7 2.207 Running transaction test
+#7 2.208 Transaction test succeeded
+#7 2.209 Running transaction
+#7 2.252   Installing : centos-release-scl-rh-2-3.el7.centos.noarch                  1/1 
+#7 2.277   Verifying  : centos-release-scl-rh-2-3.el7.centos.noarch                  1/1 
+#7 2.324 
+#7 2.324 Installed:
+#7 2.324   centos-release-scl-rh.noarch 0:2-3.el7.centos                                 
+#7 2.324 
+#7 2.325 Complete!
+#7 DONE 2.4s
+
+#8 [4/9] RUN yum install rh-python38-python -y
+#8 0.328 Loaded plugins: fastestmirror, ovl
+#8 0.505 Loading mirror speeds from cached hostfile
+#8 0.659  * base: centos.mirror.constant.com
+#8 0.661  * centos-sclo-rh: atl.mirrors.clouvider.net
+#8 0.661  * extras: mirrors.iu13.net
+#8 0.662  * updates: mirror.vcu.edu
+#8 3.181 Resolving Dependencies
+#8 3.183 --> Running transaction check
+#8 3.183 ---> Package rh-python38-python.x86_64 0:3.8.13-1.el7 will be installed
+#8 3.191 --> Processing Dependency: rh-python38-python-libs(x86-64) = 3.8.13-1.el7 for package: rh-python38-python-3.8.13-1.el7.x86_64
+#8 3.372 --> Processing Dependency: rh-python38-python-setuptools for package: rh-python38-python-3.8.13-1.el7.x86_64
+#8 3.374 --> Processing Dependency: rh-python38-runtime for package: rh-python38-python-3.8.13-1.el7.x86_64
+#8 3.376 --> Processing Dependency: libpython3.8.so.rh-python38-1.0()(64bit) for package: rh-python38-python-3.8.13-1.el7.x86_64
+#8 3.377 --> Running transaction check
+#8 3.377 ---> Package rh-python38-python-libs.x86_64 0:3.8.13-1.el7 will be installed
+#8 3.389 --> Processing Dependency: rh-python38-python-pip-wheel for package: rh-python38-python-libs-3.8.13-1.el7.x86_64
+#8 3.393 --> Processing Dependency: rh-python38-python-setuptools-wheel for package: rh-python38-python-libs-3.8.13-1.el7.x86_64
+#8 3.395 ---> Package rh-python38-python-setuptools.noarch 0:41.6.0-7.el7 will be installed
+#8 3.395 ---> Package rh-python38-runtime.x86_64 0:2.0-4.el7 will be installed
+#8 3.396 --> Processing Dependency: scl-utils for package: rh-python38-runtime-2.0-4.el7.x86_64
+#8 3.397 --> Running transaction check
+#8 3.398 ---> Package rh-python38-python-pip-wheel.noarch 0:19.3.1-3.el7 will be installed
+#8 3.398 ---> Package rh-python38-python-setuptools-wheel.noarch 0:41.6.0-7.el7 will be installed
+#8 3.398 ---> Package scl-utils.x86_64 0:20130529-19.el7 will be installed
+#8 3.442 --> Finished Dependency Resolution
+#8 3.464 
+#8 3.464 Dependencies Resolved
+#8 3.467 
+#8 3.467 ================================================================================
+#8 3.467  Package                            Arch   Version         Repository      Size
+#8 3.467 ================================================================================
+#8 3.467 Installing:
+#8 3.467  rh-python38-python                 x86_64 3.8.13-1.el7    centos-sclo-rh  71 k
+#8 3.467 Installing for dependencies:
+#8 3.467  rh-python38-python-libs            x86_64 3.8.13-1.el7    centos-sclo-rh 7.7 M
+#8 3.467  rh-python38-python-pip-wheel       noarch 19.3.1-3.el7    centos-sclo-rh 1.0 M
+#8 3.467  rh-python38-python-setuptools      noarch 41.6.0-7.el7    centos-sclo-rh 636 k
+#8 3.467  rh-python38-python-setuptools-wheel
+#8 3.467                                     noarch 41.6.0-7.el7    centos-sclo-rh 299 k
+#8 3.467  rh-python38-runtime                x86_64 2.0-4.el7       centos-sclo-rh 1.1 M
+#8 3.467  scl-utils                          x86_64 20130529-19.el7 base            24 k
+#8 3.467 
+#8 3.467 Transaction Summary
+#8 3.467 ================================================================================
+#8 3.467 Install  1 Package (+6 Dependent packages)
+#8 3.467 
+#8 3.468 Total download size: 11 M
+#8 3.468 Installed size: 42 M
+#8 3.468 Downloading packages:
+#8 3.571 warning: /var/cache/yum/x86_64/7/centos-sclo-rh/packages/rh-python38-python-3.8.13-1.el7.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID f2ee9d55: NOKEY
+#8 3.574 Public key for rh-python38-python-3.8.13-1.el7.x86_64.rpm is not installed
+#8 3.846 --------------------------------------------------------------------------------
+#8 3.847 Total                                               29 MB/s |  11 MB  00:00     
+#8 3.848 Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+#8 3.851 Importing GPG key 0xF2EE9D55:
+#8 3.851  Userid     : "CentOS SoftwareCollections SIG (https://wiki.centos.org/SpecialInterestGroup/SCLo) <security@centos.org>"
+#8 3.851  Fingerprint: c4db d535 b1fb ba14 f8ba 64a8 4eb8 4e71 f2ee 9d55
+#8 3.851  Package    : centos-release-scl-rh-2-3.el7.centos.noarch (@extras)
+#8 3.851  From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
+#8 3.881 Running transaction check
+#8 3.894 Running transaction test
+#8 4.073 Transaction test succeeded
+#8 4.074 Running transaction
+#8 4.284   Installing : scl-utils-20130529-19.el7.x86_64                             1/7 
+#8 4.364   Installing : rh-python38-runtime-2.0-4.el7.x86_64                         2/7 
+#8 4.657   Installing : rh-python38-python-pip-wheel-19.3.1-3.el7.noarch             3/7 
+#8 4.699   Installing : rh-python38-python-setuptools-wheel-41.6.0-7.el7.noarch      4/7 
+#8 4.803   Installing : rh-python38-python-setuptools-41.6.0-7.el7.noarch            5/7 
+#8 4.837   Installing : rh-python38-python-3.8.13-1.el7.x86_64                       6/7 
+#8 6.060   Installing : rh-python38-python-libs-3.8.13-1.el7.x86_64                  7/7 
+#8 6.115   Verifying  : rh-python38-python-pip-wheel-19.3.1-3.el7.noarch             1/7 
+#8 6.135   Verifying  : rh-python38-python-setuptools-wheel-41.6.0-7.el7.noarch      2/7 
+#8 6.149   Verifying  : scl-utils-20130529-19.el7.x86_64                             3/7 
+#8 6.165   Verifying  : rh-python38-python-3.8.13-1.el7.x86_64                       4/7 
+#8 6.182   Verifying  : rh-python38-python-libs-3.8.13-1.el7.x86_64                  5/7 
+#8 6.198   Verifying  : rh-python38-python-setuptools-41.6.0-7.el7.noarch            6/7 
+#8 6.213   Verifying  : rh-python38-runtime-2.0-4.el7.x86_64                         7/7 
+#8 6.263 
+#8 6.263 Installed:
+#8 6.263   rh-python38-python.x86_64 0:3.8.13-1.el7                                      
+#8 6.263 
+#8 6.263 Dependency Installed:
+#8 6.263   rh-python38-python-libs.x86_64 0:3.8.13-1.el7                                 
+#8 6.263   rh-python38-python-pip-wheel.noarch 0:19.3.1-3.el7                            
+#8 6.263   rh-python38-python-setuptools.noarch 0:41.6.0-7.el7                           
+#8 6.263   rh-python38-python-setuptools-wheel.noarch 0:41.6.0-7.el7                     
+#8 6.263   rh-python38-runtime.x86_64 0:2.0-4.el7                                        
+#8 6.263   scl-utils.x86_64 0:20130529-19.el7                                            
+#8 6.263 
+#8 6.264 Complete!
+#8 DONE 6.8s
+
+#9 [5/9] COPY requirements.txt requirements.txt
+#9 DONE 0.1s
+
+#10 [6/9] RUN update-alternatives --install /usr/bin/python python3 /opt/rh/rh-python38/root/bin/python3.8 10
+#10 DONE 0.2s
+
+#11 [7/9] RUN pip3 install -r requirements.txt
+#11 0.641 WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead.
+#11 0.689 Collecting flask (from -r requirements.txt (line 1))
+#11 0.947   Downloading https://files.pythonhosted.org/packages/cd/77/59df23681f4fd19b7cbbb5e92484d46ad587554f5d490f33ef907e456132/Flask-2.0.3-py3-none-any.whl (95kB)
+#11 1.058 Collecting flask_restful (from -r requirements.txt (line 2))
+#11 1.173   Downloading https://files.pythonhosted.org/packages/d7/7b/f0b45f0df7d2978e5ae51804bb5939b7897b2ace24306009da0cc34d8d1f/Flask_RESTful-0.3.10-py2.py3-none-any.whl
+#11 1.265 Collecting flask_jsonpify (from -r requirements.txt (line 3))
+#11 1.362   Downloading https://files.pythonhosted.org/packages/60/0f/c389dea3988bffbe32c1a667989914b1cc0bce31b338c8da844d5e42b503/Flask-Jsonpify-1.5.0.tar.gz
+#11 1.733 Collecting click>=7.1.2 (from flask->-r requirements.txt (line 1))
+#11 1.901   Downloading https://files.pythonhosted.org/packages/4a/a8/0b2ced25639fb20cc1c9784de90a8c25f9504a7f18cd8b5397bd61696d7d/click-8.0.4-py3-none-any.whl (97kB)
+#11 1.990 Collecting Jinja2>=3.0 (from flask->-r requirements.txt (line 1))
+#11 2.116   Downloading https://files.pythonhosted.org/packages/20/9a/e5d9ec41927401e41aea8af6d16e78b5e612bca4699d417f646a9610a076/Jinja2-3.0.3-py3-none-any.whl (133kB)
+#11 2.213 Collecting itsdangerous>=2.0 (from flask->-r requirements.txt (line 1))
+#11 2.330   Downloading https://files.pythonhosted.org/packages/9c/96/26f935afba9cd6140216da5add223a0c465b99d0f112b68a4ca426441019/itsdangerous-2.0.1-py3-none-any.whl
+#11 2.406 Collecting Werkzeug>=2.0 (from flask->-r requirements.txt (line 1))
+#11 2.564   Downloading https://files.pythonhosted.org/packages/f4/f3/22afbdb20cc4654b10c98043414a14057cd27fdba9d4ae61cea596000ba2/Werkzeug-2.0.3-py3-none-any.whl (289kB)
+#11 2.685 Collecting pytz (from flask_restful->-r requirements.txt (line 2))
+#11 2.967   Downloading https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl (502kB)
+#11 3.167 Collecting six>=1.3.0 (from flask_restful->-r requirements.txt (line 2))
+#11 3.277   Downloading https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl
+#11 3.370 Collecting aniso8601>=0.82 (from flask_restful->-r requirements.txt (line 2))
+#11 3.484   Downloading https://files.pythonhosted.org/packages/e3/04/e97c12dc034791d7b504860acfcdd2963fa21ae61eaca1c9d31245f812c3/aniso8601-9.0.1-py2.py3-none-any.whl (52kB)
+#11 3.574 Collecting importlib-metadata; python_version < "3.8" (from click>=7.1.2->flask->-r requirements.txt (line 1))
+#11 3.784   Downloading https://files.pythonhosted.org/packages/a0/a1/b153a0a4caf7a7e3f15c2cd56c7702e2cf3d89b1b359d1f1c5e59d68f4ce/importlib_metadata-4.8.3-py3-none-any.whl
+#11 3.889 Collecting MarkupSafe>=2.0 (from Jinja2>=3.0->flask->-r requirements.txt (line 1))
+#11 4.132   Downloading https://files.pythonhosted.org/packages/fc/d6/57f9a97e56447a1e340f8574836d3b636e2c14de304943836bd645fa9c7e/MarkupSafe-2.0.1-cp36-cp36m-manylinux1_x86_64.whl
+#11 4.205 Collecting dataclasses; python_version < "3.7" (from Werkzeug>=2.0->flask->-r requirements.txt (line 1))
+#11 4.307   Downloading https://files.pythonhosted.org/packages/fe/ca/75fac5856ab5cfa51bbbcefa250182e50441074fdc3f803f6e76451fab43/dataclasses-0.8-py3-none-any.whl
+#11 4.388 Collecting typing-extensions>=3.6.4; python_version < "3.8" (from importlib-metadata; python_version < "3.8"->click>=7.1.2->flask->-r requirements.txt (line 1))
+#11 4.515   Downloading https://files.pythonhosted.org/packages/45/6b/44f7f8f1e110027cf88956b59f2fad776cca7e1704396d043f89effd3a0e/typing_extensions-4.1.1-py3-none-any.whl
+#11 4.594 Collecting zipp>=0.5 (from importlib-metadata; python_version < "3.8"->click>=7.1.2->flask->-r requirements.txt (line 1))
+#11 4.736   Downloading https://files.pythonhosted.org/packages/bd/df/d4a4974a3e3957fd1c1fa3082366d7fff6e428ddb55f074bf64876f8e8ad/zipp-3.6.0-py3-none-any.whl
+#11 4.797 Installing collected packages: typing-extensions, zipp, importlib-metadata, click, MarkupSafe, Jinja2, itsdangerous, dataclasses, Werkzeug, flask, pytz, six, aniso8601, flask-restful, flask-jsonpify
+#11 5.434   Running setup.py install for flask-jsonpify: started
+#11 5.728     Running setup.py install for flask-jsonpify: finished with status 'done'
+#11 5.779 Successfully installed Jinja2-3.0.3 MarkupSafe-2.0.1 Werkzeug-2.0.3 aniso8601-9.0.1 click-8.0.4 dataclasses-0.8 flask-2.0.3 flask-jsonpify-1.5.0 flask-restful-0.3.10 importlib-metadata-4.8.3 itsdangerous-2.0.1 pytz-2023.3.post1 six-1.16.0 typing-extensions-4.1.1 zipp-3.6.0
+#11 DONE 6.1s
+
+#12 [8/9] RUN mkdir /python_api
+#12 DONE 0.2s
+
+#13 [9/9] COPY python-api.py /python_api/python-api.py
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 2.8s done
+#14 writing image sha256:cbfcefd60c2ef6e47a6840047fa050136e700de8e0f501223edba243e1c0d8a5 done
+#14 naming to registry.gitlab.com/derevyanchenko.sa/09-ci-06-gitlab/hello:gitlab-c53b9fdc done
+#14 DONE 2.9s
+WARNING: current commit information was not captured by the build: git was not found in the system: exec: "git": executable file not found in $PATH
+[32;1m$ docker push $CI_REGISTRY/$CI_PROJECT_PATH/hello:gitlab-$CI_COMMIT_SHORT_SHA[0;m
+The push refers to repository [registry.gitlab.com/derevyanchenko.sa/09-ci-06-gitlab/hello]
+2c75f1be0a66: Preparing
+6b850dc15f6e: Preparing
+4e34a217e78a: Preparing
+0ff747454faf: Preparing
+b0af7170b0f5: Preparing
+316e489c5b84: Preparing
+1dc0aeec2ffb: Preparing
+c305f601606d: Preparing
+174f56854903: Preparing
+316e489c5b84: Waiting
+1dc0aeec2ffb: Waiting
+c305f601606d: Waiting
+174f56854903: Waiting
+0ff747454faf: Pushed
+b0af7170b0f5: Pushed
+6b850dc15f6e: Pushed
+2c75f1be0a66: Pushed
+4e34a217e78a: Pushed
+174f56854903: Layer already exists
+316e489c5b84: Pushed
+1dc0aeec2ffb: Pushed
+c305f601606d: Pushed
+gitlab-c53b9fdc: digest: sha256:db9004d47eb226edfd9ef913b448bf2a6bd47b3feb38a0064bb818fa3014695d size: 2205
+section_end:1702756745:step_script[0Ksection_start:1702756745:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1702756746:cleanup_file_variables[0K[32;1mJob succeeded[0;m
