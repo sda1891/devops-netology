@@ -22,11 +22,10 @@
 
 4. Создать Multibranch Pipeline на запуск `Jenkinsfile` из репозитория.
 
-   ![](./img/multibranch-scan.PNG)
+     
+   ![](./img/multibranch-setup.PNG)
    
-   ![](./img/multibranch-test-done1.PNG)
-   
-   ![](./img/multibranch-test-done2.PNG)
+   ![](./img/multibranch-output.PNG)
    
    ![](./img/multibranch-job-status.PNG)
 
