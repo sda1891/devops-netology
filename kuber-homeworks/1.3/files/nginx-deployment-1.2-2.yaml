@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+      - name: init-container
+        image: busybox
+        command: ['sh', '-c', 'until nslookup nginx-service.netology.svc.cluster.local; do echo waiting for nginx-service; sleep 10; done;']
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "7"
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
