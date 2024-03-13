@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvc-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pv-app
+  template:
+    metadata:
+      labels:
+        app: pv-app
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+        - while true; do date >> /data/data.txt; sleep 5; done
+        volumeMounts:
+        - name: pv-storage
+          mountPath: /data
+      - name: multitool
+        image: praqma/network-multitool
+        volumeMounts:
+        - name: pv-storage
+          mountPath: /data
+      volumes:
+      - name: pv-storage
+        persistentVolumeClaim:
+          claimName: local-pvc
