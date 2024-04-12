@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  index.html: |
+      Just html page for LAB 3.4.
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: multitool-config
+data:
+  HTTP_PORT: "8080"
+  HTTPS_PORT: "8443"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-multitool-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-multitool
+  template:
+    metadata:
+      labels:
+        app: nginx-multitool
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /usr/share/nginx/html
+      - name: multitool
+        image: praqma/network-multitool
+        envFrom:
+        - configMapRef:
+            name: multitool-config
+        ports:
+          - containerPort: 8080
+            name: http-port
+          - containerPort: 8443
+            name: https-port
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
