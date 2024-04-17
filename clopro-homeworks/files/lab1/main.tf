@@ -145,4 +145,5 @@ module "vm-nat" {
 # Передача cloud-config в ВМ
 data "template_file" "cloudinit" {
  template = file("./cloud-init.yml")
+
 }
