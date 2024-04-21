@@ -1,0 +1,5 @@
+token     = "***"
+cloud_id  = "***"
+folder_id = "***"
+bucket_id = "wahthohjeejooph0phoaleecav4ifee7"
+sa_id     = "***"

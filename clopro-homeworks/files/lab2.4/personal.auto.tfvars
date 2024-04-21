@@ -1,0 +1,8 @@
+token        = "***"
+cloud_id     = "***"
+folder_id    = "***"
+vm_user      = "ubuntu"
+ssh_key_path = "~/.ssh/id_rsa.pub"
+domain       = "alb-example.com."
+default_zone = "ru-central1-a"
+sa_id        = "***"

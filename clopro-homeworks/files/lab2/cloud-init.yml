@@ -1,0 +1,19 @@
+#cloud-config
+users:
+  - name: ubuntu
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa ***
+
+package_update: true
+package_upgrade: false
+packages:
+ - vim
+write_files:
+  - content: |
+      <h1>Hello World, this is LAB15.2 pic in Yandex bject Storage </h1>
+      <html><img src="https://storage.yandexcloud.net/wahthohjeejooph0phoaleecav4ifee7/soveshanie.png"></html>
+    path: /var/www/html/index.html
+    permissions: '0644'
