@@ -4,11 +4,11 @@ resource "yandex_mdb_mysql_cluster" "lab-mysql-ha" {
   network_id          = yandex_vpc_network.cloudnet.id
   version             = "8.0"
   security_group_ids  = [ yandex_vpc_security_group.mysql-sg.id ]
-  deletion_protection = true
+  deletion_protection = false
 
   resources {
     resource_preset_id = "b2.medium"
-    disk_type_id       = "network-ssd"
+    disk_type_id       = "network-hdd"
     disk_size          = 20
   }
 
@@ -55,3 +55,4 @@ resource "yandex_mdb_mysql_user" "user1" {
     roles         = ["ALL"]
   }
 }
+
