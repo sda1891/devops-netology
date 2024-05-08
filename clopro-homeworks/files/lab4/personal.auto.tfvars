@@ -1,0 +1,5 @@
+token     =  "***"
+cloud_id  = "***"
+folder_id = "***"
+cluster_id = "k8s-cluster"
+sa_id     = "k8s-svc-account"
